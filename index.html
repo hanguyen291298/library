@@ -9,28 +9,36 @@
 <body>
     <div class="header-container">
         <img src="logo.png" alt="logo">
-        <h1>Good book's storing</h1>
-        <p>I have created a Library in order to add books that you have read. In addition, you can add some information that you think it is the best thing in the book.</p>
-        <p>This is the good way to remind yourself about how great the book bring you and share it to other people.</p>
+        <div class="header">
+            <h1>Good book's storing</h1>
+            <p>I have created a Library in order to add books that you have read. In addition, you can add some information that you think it is the best thing in the book. This is the good way to remind yourself about how great the book bring you and share it to other people.</p>
+        
+        </div>
+        
     </div>
-    <div class="user-input">
-        <form action="" method="post">
-            Title <input class="title" type="text">
-            Author <input class="author" type="text">
-            Main content <textarea name="content" id="content"></textarea>
-            <button type="submit" id="add">Add</button>
-        </form>
-    </div>
+
     <div class="main-container">
-        <div book-1></div>
-        <div book-2></div>
-        <div book-3></div>
-        <div book-4></div>
-        <div book-5></div>
+        <div class="user-input">
+            <button>+ Add Book</button>
+            <form action="" method="get">
+                Title <input class="title" type="text">
+                Author <input class="author" type="text">
+                Main content <textarea name="content" id="content"></textarea>
+                <button type="submit" id="add">Add</button>
+            </form>
+        </div>
+        <div class="books">
+            <div book-1>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+            <div book-2>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+            <div book-3>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+            <div book-4>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+            
+        </div>
+        
     </div>
     
     <div class="suggestion-books">
-        <h3>List books that you want to read in the future</h3>
+        <h3>List books that you will read next</h3>
         <ul>
             <li>book1</li>
             <li>book2</li>
