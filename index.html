@@ -19,19 +19,21 @@
 
     <div class="main-container">
         <div class="user-input">
-            <button>+ Add Book</button>
-            <form action="" method="get">
-                Title <input class="title" type="text">
-                Author <input class="author" type="text">
-                Main content <textarea name="content" id="content"></textarea>
+            <button id="add-button">+ Add Book</button>
+            <form id="form" method="get">
+                <label for="title">Title</label>
+                <input id="title" type="text" name="title">
+                <label for="author">Author</label>
+                <input id="author" type="text" name="author">
+                <label for="pages">Pages</label>
+                <input id="pages" type="text" name="pages">
+                <label for="content">Add Content</label>
+                <textarea name="content" id="content" name="content" rows="6" cols="4"></textarea>
                 <button type="submit" id="add">Add</button>
             </form>
         </div>
         <div class="books">
-            <div book-1>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
-            <div book-2>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
-            <div book-3>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
-            <div book-4>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</div>
+           
             
         </div>
         
