@@ -9,6 +9,8 @@ function Book(element) {
     let author= document.createElement("h3")
     let pages = document.createElement("h3")
     let content = document.createElement("p")
+
+  
     
 
     title.innerHTML = element.title;
@@ -19,7 +21,7 @@ function Book(element) {
     child.appendChild(author);
     child.appendChild(pages);
     child.appendChild(content);
-    
+
     return child
 
     
@@ -34,7 +36,7 @@ submit.addEventListener("click", (event)=>{
   event.preventDefault()
   library_books.forEach((element)=>{
     books.appendChild(Book(element))
-  })
+  }) 
   form_input.style.display = "none";
 })
 
@@ -45,10 +47,19 @@ function addBookToLibrary() {
     let author = document.querySelector("#author")
     let pages = document.querySelector("#pages")
     let content = document.querySelector("#content")
-    library_books.push({"title": title.value, "author": author.value, "pages": pages.value, "content": content.value}) 
-    title.value = ""  ;
-    author.value = "";
-    console.log(library_books)
+
+    if (!title.value || !author.value || !pages.value || !content.value){
+      alert("please fill in the form")
+    }
+    else{
+      library_books.push({"title": title.value, "author": author.value, "pages": pages.value, "content": content.value}) 
+      title.value = ""  ;
+      author.value = "";
+      pages.value = "";
+      content.value = "";
+      
+    }
+    
 }
 
 
