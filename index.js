@@ -16,15 +16,17 @@ const booksContainer = document.querySelector(".books");
 const submit = document.getElementById("submit");
 const bookForm = document.getElementById("form"); // Select the form element
 
+let book_title = document.getElementById("title");
+let book_author = document.getElementById("author");
+let book_pages = document.getElementById("pages");
+let book_content = document.getElementById("content")
+
 function Submit() {
     // Check if the form is valid (all required fields are filled)
     if (form_input.checkValidity()) {
-        const book_title = document.getElementById("title").value;
-        const book_author = document.getElementById("author").value;
-        const book_pages = document.getElementById("pages").value;
-        const book_content = document.getElementById("content").value;
-
-        const book = new Book(book_title, book_author, book_pages, book_content);
+        
+     
+        const book = new Book(book_title.value, book_author.value, book_pages.value, book_content.value);
         book.Add_book();
 
         const child = document.createElement("div");
@@ -46,15 +48,28 @@ function Submit() {
         main_content.innerHTML = book.content;
 
         booksContainer.appendChild(child); // Append the new book to the library container
-    }
-    
+
+    }    
 }
 
-submit.addEventListener("click", Submit)
+submit.addEventListener("click", ()=>{
+    Submit()
+    
+})
+
+document.addEventListener("keypress", (event=>{
+    if (event.key === "Enter"){
+        Submit()
+        
+    }
+}))
+
 const add_form = document.getElementById("add-button");
 const form_input = document.getElementById("form");
 document.querySelector("#form").addEventListener("submit", (evt)=>{
     evt.preventDefault();
+    form_input.reset()
+    form_input.style.display = "none";
 })
 
 
