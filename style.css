@@ -7,13 +7,12 @@
 }
 
 *{
-    box-sizing: border-box;
-    border: 1px solid blue;
+    box-sizing: border-box;   
     color: var(--content-color);
 }
-html, body {
-    margin: 0;
-    padding: 0;
+
+html, body {   
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -21,7 +20,7 @@ body{
     grid-template-columns: 4fr 1fr;
     grid-template-rows: 1fr 3.5fr 0.5fr ;
     background-color: var(--bgrc);
-    
+    justify-items: center;
 }
 
 .header-container{
@@ -52,10 +51,21 @@ body{
     grid-area: 2/1/2/1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    align-items: center;
+    align-items:flex-start;
+    
     gap: var(--gap-or-padding);
     overflow: auto;
+}
+
+
+.footer{
+    grid-area: 3/1/3/span 2;
+    text-align: center;
+    align-self: flex-end;    
+}
+
+.user-input{
+    align-self: center;
 }
 
 #add-button{
@@ -64,28 +74,73 @@ body{
     color: white;
     background-color: var(--bgrc);
     border-radius: 5px;
+    align-self: center;   
 }
 
 #add-button:hover{
     background-color: gray;
     
 }
+
+.books{
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-template-rows: repeat(auto, 2fr);   
+    gap: var(--gap-or-padding);
+    margin-top: 1rem;
+    padding: 2rem;    
+}
+
+.book {
+    padding: 1rem;
+    background-color: #D5FFE4;    
+    border-radius: 8px;
+    box-shadow: 10px -8px 5px grey;
+    margin: 1rem 1rem;   
+} 
+
+.book .title{
+    margin: 0;
+    border-bottom: 1px ridge gray;
+}
+
+.book p{
+    width: 20ch;
+}
+
+.book > *{
+    color: black;
+    text-align: center;   
+}
+
+.author{
+    text-align: right;
+    margin: 0;   
+}
+
+.content{
+    text-align: left;
+    border-top: 1px ridge gray;
+}
+
 #form{
     margin-top: 2rem;
     display: none;
     grid-template-columns: 1fr 2fr;
-    gap: 10px;
-    
+    gap: 10px;    
     padding: var(--gap-or-padding);
     color: black;
     background-color: #D5FFE4;
-    border-radius: 8px;
-      
+    border-radius: 8px;      
 }
 
 #form button{
     width: max-content;
     padding: 2px 1rem;
+}
+
+#form button:hover{
+    background-color: grey;
 }
 
 #form > *{
@@ -94,27 +149,3 @@ body{
     font-size: var(--font-size-content)
 };
 
-.books{
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    grid-template-rows: 2fr 2fr;
-    gap: var(--gap-or-padding);
-    align-self: flex-start;
-    
-    
-}
-.books >*{
-    padding: var(--gap-or-padding);
-    background-color: white;
-    
-}
-.book > *{
-    color: black;
-}
-
-.footer{
-    grid-area: 3/1/3/span 2;
-    text-align: center;
-    align-self: flex-end;
-    
-}
