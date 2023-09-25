@@ -14,7 +14,6 @@ Book.prototype.Add_book = function addBookToLibrary() {
 const booksContainer = document.querySelector(".books");
 
 const submit = document.getElementById("submit");
-const bookForm = document.getElementById("form"); // Select the form element
 
 let book_title = document.getElementById("title");
 let book_author = document.getElementById("author");
@@ -46,18 +45,21 @@ function Submit() {
         child.classList.add("book");
 
         const name = document.createElement("h3");
-        const aut = document.createElement("h3");
+        name.classList.add("title")
+        const aut = document.createElement("p");
+        aut.classList.add("author")
         const total_pages = document.createElement("h3");
-        const main_content = document.createElement("h4");
+        const main_content = document.createElement("p");
+        main_content.classList.add("content")
 
         child.appendChild(name);
         child.appendChild(aut);
         child.appendChild(total_pages);
         child.appendChild(main_content);
 
-        name.innerHTML = book.title;
-        aut.innerHTML = book.author;
-        total_pages.innerHTML = book.pages;
+        name.innerHTML = `${book.title}`;
+        aut.innerHTML = `- ${book.author}`;
+        total_pages.innerHTML = `${book.pages} pages`;
         main_content.innerHTML = book.content;
 
         booksContainer.appendChild(child); // Append the new book to the library container
@@ -72,7 +74,8 @@ submit.addEventListener("click", ()=>{
 
 document.addEventListener("keypress", (event=>{
     if (event.key === "Enter"){
-        Submit()       
+        Submit()    
+        Cancel()   
     }
 }))
 
