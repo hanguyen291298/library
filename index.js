@@ -51,17 +51,20 @@ function Submit() {
         const total_pages = document.createElement("h3");
         const main_content = document.createElement("p");
         main_content.classList.add("content")
+        const remove = document.createElement("button")
+        remove.classList.add("remove")
 
         child.appendChild(name);
         child.appendChild(aut);
         child.appendChild(total_pages);
         child.appendChild(main_content);
+        child.appendChild(remove)
 
         name.innerHTML = `${book.title}`;
         aut.innerHTML = `- ${book.author}`;
         total_pages.innerHTML = `${book.pages} pages`;
         main_content.innerHTML = book.content;
-
+        remove.innerHTML = "remove";
         booksContainer.appendChild(child); // Append the new book to the library container
 
     }    
