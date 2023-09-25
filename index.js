@@ -1,77 +1,66 @@
 const library_books = [];
-const submit = document.getElementById("add")
 
-function Book(element) {
-    // the constructor...
-    let child = document.createElement("div")
-    child.classList.add("book")
-    let title = document.createElement("h3")
-    let author= document.createElement("h3")
-    let pages = document.createElement("h3")
-    let content = document.createElement("p")
+function Book(ttl, aut, n_pages, content) {
+    this.title = ttl;
+    this.author = aut;
+    this.pages = n_pages;
+    this.content = content;
+}
 
-  
-    
+Book.prototype.Add_book = function addBookToLibrary() {
+    library_books.push({ "title": this.title, "author": this.author, "pages": this.pages, "content": this.content });
+}
 
-    title.innerHTML = element.title;
-    author.innerHTML = element.author;
-    pages.innerHTML = element.pages;
-    content.innerHTML = element.content;    
-    child.appendChild(title);
-    child.appendChild(author);
-    child.appendChild(pages);
-    child.appendChild(content);
+const booksContainer = document.querySelector(".books");
 
-    return child
+const submit = document.getElementById("submit");
+const bookForm = document.getElementById("form"); // Select the form element
 
-    
-  }
+function Submit() {
+    // Check if the form is valid (all required fields are filled)
+    if (form_input.checkValidity()) {
+        const book_title = document.getElementById("title").value;
+        const book_author = document.getElementById("author").value;
+        const book_pages = document.getElementById("pages").value;
+        const book_content = document.getElementById("content").value;
 
+        const book = new Book(book_title, book_author, book_pages, book_content);
+        book.Add_book();
 
-const books = document.querySelector(".books")
+        const child = document.createElement("div");
+        child.classList.add("book");
 
-submit.addEventListener("click", (event)=>{
-  books.innerHTML = "";
-  addBookToLibrary()
-  event.preventDefault()
-  library_books.forEach((element)=>{
-    books.appendChild(Book(element))
-  }) 
-  form_input.style.display = "none";
-})
+        const name = document.createElement("h3");
+        const aut = document.createElement("h3");
+        const total_pages = document.createElement("h3");
+        const main_content = document.createElement("h4");
 
+        child.appendChild(name);
+        child.appendChild(aut);
+        child.appendChild(total_pages);
+        child.appendChild(main_content);
 
-function addBookToLibrary() {
-    // do stuff here   
-    let title = document.querySelector("#title")
-    let author = document.querySelector("#author")
-    let pages = document.querySelector("#pages")
-    let content = document.querySelector("#content")
+        name.innerHTML = book.title;
+        aut.innerHTML = book.author;
+        total_pages.innerHTML = book.pages;
+        main_content.innerHTML = book.content;
 
-    if (!title.value || !author.value || !pages.value || !content.value){
-      alert("please fill in the form")
-    }
-    else{
-      library_books.push({"title": title.value, "author": author.value, "pages": pages.value, "content": content.value}) 
-      title.value = ""  ;
-      author.value = "";
-      pages.value = "";
-      content.value = "";
-      
+        booksContainer.appendChild(child); // Append the new book to the library container
     }
     
 }
 
-
-
-
-// create effection to the add book button 
-// it should open up the form to enter the information
-
+submit.addEventListener("click", Submit)
 const add_form = document.getElementById("add-button");
-const form_input = document.getElementById("form")
-
-add_form.addEventListener("click", ()=>{
-  form_input.style.display = "grid";
-  form_input.style.position = "absolute"
+const form_input = document.getElementById("form");
+document.querySelector("#form").addEventListener("submit", (evt)=>{
+    evt.preventDefault();
 })
+
+
+// Create an effect to open the form to enter book information
+
+add_form.addEventListener("click", () => {
+    form_input.style.display = "grid";
+    form_input.style.position = "absolute";
+});
