@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header-container">
@@ -12,22 +15,24 @@
         <div class="header">
             <h1>Book's Library</h1>
             <p>I have created a Library in order to add books that you have read. In addition, you can add some information that you think it is the best thing in the book. This is the good way to remind yourself about how great the book bring you and share it to other people.</p>
-        
+            <hr>
         </div>
         
     </div>
-
+    
+    
     <div class="main-container">
         <div class="user-input">
             <button id="add-button">+ Add Book</button>
           
             <form id="form" method="get">
+                <h3>Add new book</h3><br>
                 <label for="title">Title</label>
                 <input id="title" type="text" name="title" required>
                 <label for="author">Author</label>
                 <input id="author" type="text" name="author" required>
                 <label for="pages">Pages</label>
-                <input id="pages" type="number" name="pages" required>
+                <input id="pages" type="number" name="pages" placeholder="123" required>
                 <label for="content">Add Content</label>
                 <textarea id="content" name="content" rows="6" cols="4" placeholder="This is an awesome book" required></textarea>                    
                 <button id="submit">Add</button>
@@ -45,7 +50,7 @@
     </div>
     
     <div class="suggestion-books">
-        <h3>List books that you will read next</h3>
+        <h3>Suggested's books</h3>
         <ul>
             <li>book1</li>
             <li>book2</li>
