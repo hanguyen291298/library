@@ -47,6 +47,7 @@ body{
 .header p{
     font-size: var(--font-size-content);
 }
+
 .main-container{
     grid-area: 2/1/2/1;
     display: flex;
@@ -91,6 +92,7 @@ body{
     padding: 2rem;    
 }
 
+
 .book {
     padding: 1rem;
     background-color: #D5FFE4;    
@@ -123,11 +125,12 @@ body{
     border-top: 1px ridge gray;
 }
 
+
 #form{
-    margin-top: 2rem;
+    margin-top: 3rem;
     display: none;
     grid-template-columns: 1fr 2fr;
-    gap: 10px;    
+    gap: 8px;    
     padding: var(--gap-or-padding);
     color: black;
     background-color: #D5FFE4;
@@ -147,5 +150,29 @@ body{
     border-radius: 3px;
     color: blue;
     font-size: var(--font-size-content)
-};
+}
+
+@media(max-width: 900px){
+    .books{
+        grid-template-columns: repeat(2, 2fr);
+    }
+}
+
+@media(max-width: 680px){
+    .books{
+        grid-template-columns: minmax(250px, 1fr);
+    }
+    #add-button, .header h1{
+        font-size: 2rem;
+        
+    }
+    
+    #form > *{
+        font-size: 0.8rem;
+        
+    } 
+    .header p, .book > *{
+        font-size: 1rem;
+    }  
+}
 
