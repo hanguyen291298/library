@@ -21,6 +21,19 @@ let book_author = document.getElementById("author");
 let book_pages = document.getElementById("pages");
 let book_content = document.getElementById("content")
 
+
+// Create an effect to open the form to enter book information
+
+const add_form = document.getElementById("add-button");
+const form_input = document.getElementById("form");
+add_form.addEventListener("click", () => {
+    form_input.style.display = "grid";
+    form_input.style.position = "absolute";
+});
+
+
+// Create submit function to add the book's information to the library when it is submited
+
 function Submit() {
     // Check if the form is valid (all required fields are filled)
     if (form_input.checkValidity()) {
@@ -52,30 +65,33 @@ function Submit() {
     }    
 }
 
+// create event when the submit is clicked or enter key is pressed, the submit function will be called
 submit.addEventListener("click", ()=>{
-    Submit()
-    
+    Submit()   
 })
 
 document.addEventListener("keypress", (event=>{
     if (event.key === "Enter"){
-        Submit()
-        
+        Submit()       
     }
 }))
 
-const add_form = document.getElementById("add-button");
-const form_input = document.getElementById("form");
+
+
+// Call the cancel function when it is clicked
+const cancel = document.getElementById("cancel")
+
+function Cancel(){
+    form_input.reset()
+    form_input.style.display = "none"
+}
+
+cancel.addEventListener("click", Cancel)
 document.querySelector("#form").addEventListener("submit", (evt)=>{
     evt.preventDefault();
     form_input.reset()
-    form_input.style.display = "none";
+    Cancel()
 })
 
 
-// Create an effect to open the form to enter book information
 
-add_form.addEventListener("click", () => {
-    form_input.style.display = "grid";
-    form_input.style.position = "absolute";
-});
