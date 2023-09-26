@@ -68,7 +68,9 @@ function Submit() {
         const total_pages = document.createElement("h3");
         const main_content = document.createElement("p");
         main_content.classList.add("content")
+        const div_remove = document.createElement("div")
         const remove = document.createElement("button")
+        div_remove.appendChild(remove)
         remove.textContent = "remove";
         remove.classList.add("remove")
         remove.setAttribute("book-index", index)
@@ -79,7 +81,7 @@ function Submit() {
         child.appendChild(aut);
         child.appendChild(total_pages);
         child.appendChild(main_content);
-        child.appendChild(remove)
+        child.appendChild(div_remove)
 
         name.innerHTML = `${book.title}`;
         aut.innerHTML = `- ${book.author}`;
