@@ -5,13 +5,20 @@ function Book(ttl, aut, n_pages, content) {
     this.author = aut;
     this.pages = n_pages;
     this.content = content;
+    
+    
 }
+const booksContainer = document.querySelector(".books");
 
 Book.prototype.Add_book = function addBookToLibrary() {
     library_books.push({ "title": this.title, "author": this.author, "pages": this.pages, "content": this.content });
 }
 
-const booksContainer = document.querySelector(".books");
+Book.prototype.Remove_book = function Remove(idx){
+    library_books.splice(idx, 1);
+    const element_to_remove = booksContainer.querySelector(`[book-index="${idx}"]`)
+    booksContainer.removeChild(element_to_remove)
+}
 
 const submit = document.getElementById("submit");
 
@@ -37,12 +44,13 @@ function Submit() {
     // Check if the form is valid (all required fields are filled)
     if (form_input.checkValidity()) {
         
-     
+        const index = library_books.length;
         const book = new Book(book_title.value, book_author.value, book_pages.value, book_content.value);
         book.Add_book();
 
         const child = document.createElement("div");
         child.classList.add("book");
+        child.setAttribute("book-index", index)
 
         const name = document.createElement("h3");
         name.classList.add("title")
@@ -52,7 +60,11 @@ function Submit() {
         const main_content = document.createElement("p");
         main_content.classList.add("content")
         const remove = document.createElement("button")
+        remove.textContent = "remove";
         remove.classList.add("remove")
+        remove.setAttribute("book-index", index)
+
+        
 
         child.appendChild(name);
         child.appendChild(aut);
@@ -64,9 +76,15 @@ function Submit() {
         aut.innerHTML = `- ${book.author}`;
         total_pages.innerHTML = `${book.pages} pages`;
         main_content.innerHTML = book.content;
-        remove.innerHTML = "remove";
+        
         booksContainer.appendChild(child); // Append the new book to the library container
 
+        remove.addEventListener("click", (event)=>{
+            const id = event.target.getAttribute("book-index")
+            
+            book.Remove_book(id)
+          
+        })
     }    
 }
 
@@ -98,6 +116,4 @@ document.querySelector("#form").addEventListener("submit", (evt)=>{
     form_input.reset()
     Cancel()
 })
-
-
 
